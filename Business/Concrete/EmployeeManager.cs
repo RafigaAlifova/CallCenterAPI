@@ -1,8 +1,11 @@
 ﻿using Business.Abstract;
+using Core.CrossCuttingConcerns.Validation.FluentValidation;
 using DataAccess.Abstract;
+using Business.Validation.FluentValidation;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using Core.Aspects.Autofac.Validation;
 
 namespace Business.Concrete
 {
@@ -15,6 +18,7 @@ namespace Business.Concrete
             _employeeDal = employeeDal;
         }
 
+        [ValidationAspect(typeof(EmployeeValidator))]
         public void Add(Employee employee)
         {
             this._employeeDal.Add(employee);
@@ -44,6 +48,7 @@ namespace Business.Concrete
         {
             return this._employeeDal.GetNextId();
         }
+        [ValidationAspect(typeof(EmployeeValidator))]
         public void Update(Employee employee)
         {
             this._employeeDal.Update(employee);

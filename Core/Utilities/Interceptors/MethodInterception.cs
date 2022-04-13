@@ -10,6 +10,7 @@ namespace Core.Utilities.Interceptors
         protected virtual void OnSuccess(IInvocation invocation) { }
         protected virtual void OnAfter(IInvocation invocation) { }
 
+        //hansi aspecti ise salsaq bu metod calisacaq mutleq
         public override void Intercept(IInvocation invocation)
         {
             var isSuccess = true;
